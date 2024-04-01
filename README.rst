@@ -2,6 +2,22 @@
 Tokenizer: A tokenizer for Icelandic text
 -----------------------------------------
 
+** Note from Annika ** 
+
+This repository most likely does not work to install. The intended usage is:
+
+```bash
+# Clone the GitHub repository
+git clone https://github.com/AnnikaSimonsen/FO-Tokenizer
+cd FO-Tokenizer
+# # [ Activate your virtualenv here, if you have one ]
+# Install the package in editable mode
+pip install -e ".[dev]"
+# Now you're ready to go
+python fotest.py
+```
+-------
+
 .. image:: https://github.com/mideind/Tokenizer/workflows/tests/badge.svg
    :target: https://github.com/mideind/Tokenizer
 
