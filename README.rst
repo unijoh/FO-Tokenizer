@@ -6,7 +6,6 @@ Tokenizer: A tokenizer for Icelandic text
 
 This repository most likely does not work to install. The intended usage is:
 
-```bash
 # Clone the GitHub repository
 git clone https://github.com/AnnikaSimonsen/FO-Tokenizer
 cd FO-Tokenizer
@@ -15,7 +14,7 @@ cd FO-Tokenizer
 pip install -e ".[dev]"
 # Now you're ready to go
 python fotest.py
-```
+
 -------
 
 .. image:: https://github.com/mideind/Tokenizer/workflows/tests/badge.svg
