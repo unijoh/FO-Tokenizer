@@ -7,6 +7,7 @@ Tokenizer: A tokenizer for Icelandic text
 This repository most likely does not work to install. The intended usage is:
 
 # Clone the GitHub repository
+
 git clone https://github.com/AnnikaSimonsen/FO-Tokenizer
 
 cd FO-Tokenizer
