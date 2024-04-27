@@ -1,10 +1,12 @@
 -----------------------------------------
-Tokenizer: A tokenizer for Icelandic text
+FO-Tokenizer: A tokenizer for Faroese text
 -----------------------------------------
 
 ** Note from Annika ** 
 
-This repository most likely does not work to install. The intended usage is:
+This tokenizer is a modified version of Miðeind's Icelandic Tokenizer: https://github.com/mideind/Tokenizer
+
+This is how you can install the Faroese tokenizer.
 
 # Clone the GitHub repository
 
@@ -18,9 +20,7 @@ cd FO-Tokenizer
 
 pip install -e ".[dev]"
 
-# Now you're ready to go
-
-python fotest.py
+# Now you're ready to go. Below is the README from the original tokenizer.
 
 -------
 
