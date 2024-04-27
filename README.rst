@@ -1,8 +1,4 @@
------------------------------------------
-FO-Tokenizer: A tokenizer for Faroese text
------------------------------------------
-
-** Note from Annika ** 
+# FO-Tokenizer: A tokenizer for Faroese text
 
 This tokenizer is a modified version of Miðeind's Icelandic Tokenizer: https://github.com/mideind/Tokenizer
 
