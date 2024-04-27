@@ -1,8 +1,11 @@
 [project]
-name = "tokenizer"
-version = "3.4.3"
-description = "A tokenizer for Icelandic text"
-authors = [{ name = "Miðeind ehf.", email = "mideind@mideind.is" }]
+name = "fotokenizer"
+version = "1.0.0"
+description = "A tokenizer for Faroese text"
+authors = [
+    { name = "Miðeind ehf.", email = "mideind@mideind.is" },
+    { name = "Annika Simonsen", email = "annika@hi.is" }
+]
 readme = { file = "README.rst", content-type = "text/x-rst" }
 license = { file = "LICENSE.txt" }
 # For classifier list see: https://pypi.org/pypi?%3Aaction=list_classifiers
@@ -13,7 +16,7 @@ classifiers = [
     "Operating System :: Unix",
     "Operating System :: POSIX",
     "Operating System :: Microsoft :: Windows",
-    "Natural Language :: Icelandic",
+    "Natural Language :: Faroese",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
@@ -29,15 +32,15 @@ classifiers = [
 requires-python = ">=3.8"
 
 [project.urls]
-Repository = "https://github.com/mideind/Tokenizer"
+Repository = "https://github.com/AnnikaSimonsen/FO-Tokenizer"
 
 [project.optional-dependencies]
 # dev dependencies
 dev = ["pytest"]
 
 [project.scripts]
-# 'tokenize' command line tool
-tokenize = "tokenizer.main:main"
+# 'fotokenize' command line tool
+fotokenize = "tokenizer.main:main"
 
 # *** Configuration of tools ***
 
