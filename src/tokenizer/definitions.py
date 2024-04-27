@@ -210,7 +210,7 @@ PUNCT_INDIRECT_SPEECH = frozenset(["?", "!"])
 SQUOTES = "'‚‛‘´"
 DQUOTES = '"“„”«»'
 
-CLOCK_ABBREVS = frozenset(("kl", "kl.", "klokkan"))
+CLOCK_ABBREVS = frozenset(("kl", "kl.", "klukkan"))
 
 # Allowed first digits in Icelandic telephone numbers
 TELNO_PREFIXES = "42573"
@@ -225,7 +225,7 @@ COUNTRY_CODES = frozenset(
 )
 
 # Words that can precede a year number; will be assimilated into the year token
-YEAR_WORD = frozenset(("ár", "árið", "ársins", "árinum"))
+YEAR_WORD = frozenset(("ár," "árið", "ársins", "árinum"))
 
 # Characters that can start a numeric token
 DIGITS_PREFIX = frozenset([d for d in "0123456789"])
