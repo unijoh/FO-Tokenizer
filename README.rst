@@ -16,7 +16,7 @@ $ cd FO-Tokenizer
 
 # Install the package in editable mode
 
-$ pip install -e ".[dev]"
+$ pip install -e .
 
 # Now you're ready to go. Below is the README from the original tokenizer.
 
