@@ -2,6 +2,8 @@
 
 This tokenizer is a modified version of Miðeind's Icelandic Tokenizer: https://github.com/mideind/Tokenizer
 
+In this version, the command is called "fotokenize" instead of "tokenize".
+
 This is how you can install the Faroese tokenizer.
 
 # Clone the GitHub repository
