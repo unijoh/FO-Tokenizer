@@ -43,7 +43,7 @@ import json
 from functools import partial
 
 from .definitions import AmountTuple, BIN_Tuple, NumberTuple, PunctuationTuple
-from .tokenizer import TOK, Tok, tokenize
+from .fotokenizer import TOK, Tok, tokenize
 
 
 ReadFile = argparse.FileType("r", encoding="utf-8")

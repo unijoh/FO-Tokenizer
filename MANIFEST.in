@@ -1,3 +1,3 @@
 graft src
-prune src/tokenizer/__pycache__
-prune src/tokenizer/.mypy_cache
+prune src/fotokenizer/__pycache__
+prune src/fotokenizer/.mypy_cache

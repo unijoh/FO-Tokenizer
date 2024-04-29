@@ -40,7 +40,7 @@ dev = ["pytest"]
 
 [project.scripts]
 # 'fotokenize' command line tool
-fotokenize = "tokenizer.main:main"
+fotokenize = "fotokenizer.main:main"
 
 # *** Configuration of tools ***
 

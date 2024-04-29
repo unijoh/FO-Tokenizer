@@ -42,7 +42,7 @@ from .definitions import (
     BIN_Tuple,
     BIN_TupleList,
 )
-from .tokenizer import (
+from .fotokenizer import (
     TOK,
     Tok,
     tokenize,
@@ -64,7 +64,7 @@ from .abbrev import Abbreviations, ConfigError
 
 __author__ = "Miðeind ehf."
 __copyright__ = "(C) 2023 Miðeind ehf."
-__version__ = importlib.metadata.version("tokenizer")
+__version__ = importlib.metadata.version("fotokenizer")
 
 
 __all__ = (

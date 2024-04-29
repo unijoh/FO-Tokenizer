@@ -286,7 +286,7 @@ class Abbreviations:
                 return
 
             section = None
-            config = open_text(package="tokenizer", resource="Abbrev.conf", encoding="utf-8")
+            config = open_text(package="fotokenizer", resource="Abbrev.conf", encoding="utf-8")
             for s in config:
                 # Ignore comments
                 ix = s.find("#")

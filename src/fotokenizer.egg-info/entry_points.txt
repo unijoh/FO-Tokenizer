@@ -1,0 +1,2 @@
+[console_scripts]
+fotokenize = fotokenizer.main:main
