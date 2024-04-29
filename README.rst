@@ -6,17 +6,19 @@ This is how you can install the Faroese tokenizer.
 
 # Clone the GitHub repository
 
-git clone https://github.com/AnnikaSimonsen/FO-Tokenizer
+$ git clone https://github.com/AnnikaSimonsen/FO-Tokenizer
 
-cd FO-Tokenizer
+$ cd FO-Tokenizer
 
 # # [ Activate your virtualenv here, if you have one ]
 
 # Install the package in editable mode
 
-pip install -e ".[dev]"
+$ pip install -e ".[dev]"
 
 # Now you're ready to go. Below is the README from the original tokenizer.
+
+$ echo "Tann 3. januar keypti eg m.a. 5 kg av hundamati. Tað kostaði 100 kr." | fotokenize --csv
 
 -------
 
