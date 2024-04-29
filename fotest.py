@@ -1,4 +1,4 @@
-from tokenizer import tokenize, TOK
+from fotokenizer import fotokenize, TOK
 
 text = ("Nógvur vindur verður næstu dagarnar, men fríggjakvøldið minkar vindurin aftur, og síðani verður stilt og meira ella minni turt til annan páskadag tá vindurin vaksur aftur. "
     "Tað veit Veðurstova Føroya.")
