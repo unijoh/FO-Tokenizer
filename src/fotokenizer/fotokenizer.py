@@ -2926,7 +2926,7 @@ def parse_phrases_2(
             if next_token.kind == TOK.NUMBER and (
                 token.txt in ISK_AMOUNT_PRECEDING or token.txt in CURRENCY_ABBREV
             ):
-                curr = "ISK" if token.txt in ISK_AMOUNT_PRECEDING else token.txt
+                curr = "DKK" if token.txt in ISK_AMOUNT_PRECEDING else token.txt
                 token = TOK.Amount(
                     token.concatenate(next_token, separator=" "),
                     curr,
@@ -2942,7 +2942,7 @@ def parse_phrases_2(
                     # but we try to retain the previous case information if any
                     token = TOK.Amount(
                         token.concatenate(next_token, separator=" "),
-                        "ISK",
+                        "DKK",
                         token.number * AMOUNT_ABBREV[next_token.txt],
                     )
                     next_token = next(token_stream)
