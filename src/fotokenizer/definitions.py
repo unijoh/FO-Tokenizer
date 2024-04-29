@@ -1162,17 +1162,19 @@ MOLECULE_REGEX = re.compile(r"^(({0})+\d*)+".format(ELEMENTS_REGEX))
 MOLECULE_FILTER = re.compile(r"\d")
 
 
-# Validation of Icelandic social security numbers
-KT_MAGIC = [3, 2, 7, 6, 5, 4, 0, 3, 2]
+# Validation of Faroese social security numbers
 
+KT_MAGIC = [3,2,7,6,5,4,3,2,1]
 
 def valid_ssn(kt: str) -> bool:
-    """Validate Icelandic social security number"""
-    if not kt or len(kt) != 11 or kt[6] != "-":
+    kt = str(kt.replace('-',''))
+    if not kt or len(kt) != 9:
         return False
-    m = 11 - sum((ord(kt[i]) - 48) * KT_MAGIC[i] for i in range(9)) % 11
-    c = ord(kt[9]) - 48
-    return m == 11 if c == 0 else m == c
+    kt = list(map(int,[*kt]))
+   
+    m = 11 - sum([KT_MAGIC[i]*kt[i] for i in range(len(kt))])%11
+
+    return m == 11
 
 
 # HTML escaped characters/ligatures, e.g. '&aacute;' meaning 'á'.
