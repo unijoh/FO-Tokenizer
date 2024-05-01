@@ -18,10 +18,11 @@ $ cd FO-Tokenizer
 
 $ pip install -e .
 
-# Now you're ready to go. Below is the README from the original tokenizer.
+# Now you're ready to go.
 
 $ echo "Tann 3. januar keypti eg m.a. 5 kg av hundamati. Tað kostaði 100 kr." | fotokenize --csv
 
+Below is the README from the original tokenizer.
 -------
 
 .. image:: https://github.com/mideind/Tokenizer/workflows/tests/badge.svg
