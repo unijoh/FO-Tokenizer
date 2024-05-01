@@ -23,7 +23,8 @@ $ pip install -e .
 $ echo "Tann 3. januar keypti eg m.a. 5 kg av hundamati. Tað kostaði 100 kr." | fotokenize --csv
 
 Below is the README from the original tokenizer.
--------
+
+Contact: annika@hi.is
 
 .. image:: https://github.com/mideind/Tokenizer/workflows/tests/badge.svg
    :target: https://github.com/mideind/Tokenizer
