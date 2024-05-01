@@ -2,7 +2,7 @@
 
 This tokenizer is a modified version of Miðeind's Icelandic Tokenizer: https://github.com/mideind/Tokenizer
 
-In this version, the command is called "fotokenize" instead of "tokenize".
+In this version, the tokenizer is called "fotokenizer" and the command is called "fotokenize" instead of "tokenizer" and "tokenize". The list of Faroese abbreviations has been taken from Málráðið ("The Faroese Language Committee"): https://malrad.fo/ordalistar along with a few additions. The other main modifications had been made in definitions.py and tokenizer.py where dates, digits, metrics etc. have been modified for Faroese usage. NB: Most of the original Icelandic documentation of the code has been left untouched.
 
 This is how you can install the Faroese tokenizer.
 
