@@ -22,6 +22,21 @@ $ pip install -e .
 
 $ echo "Tann 3. januar keypti eg m.a. 5 kg av hundamati. Tað kostaði 100 kr." | fotokenize --csv
 
+6,"Tann","","Tann","0-1-2-3"
+19,"3. januar","0|1|3"," 3. januar","1-2-3-4-5-6-7-8-9"
+6,"keypti",""," keypti","1-2-3-4-5-6"
+6,"eg",""," eg","1-2"
+6,"m.a.","millum annað"," m.a.","1-2-3-4"
+22,"5 kg","kg|5.0"," 5 kg","1-2-3-4"
+6,"av","avestiskt|avestiskur"," av","1-2"
+6,"hundamati",""," hundamati","1-2-3-4-5-6-7-8-9"
+1,".",".",".","0"
+0,"","","",""
+6,"Tað",""," Tað","1-2-3"
+6,"kostaði",""," kostaði","1-2-3-4-5-6-7"
+13,"100 kr.","100|DKK"," 100 kr.","1-2-3-4-5-6-7"
+0,"","","",""
+
 Below is the README from the original tokenizer.
 
 Contact: annika@hi.is
