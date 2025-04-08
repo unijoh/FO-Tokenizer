@@ -2188,6 +2188,7 @@ def parse_particles(token_stream: Iterator[Tok], **options: Any) -> Iterator[Tok
                             token = TOK.Word(
                                 token.concatenate(next_token), lookup(abbrev)
                             )
+
                     else:
                         # 'Regular' abbreviation in the middle of a sentence:
                         # Eat the period and yield the abbreviation as a single token
@@ -3225,34 +3226,23 @@ def detokenize(tokens: Iterable[Tok], normalize: bool = False) -> str:
     punctuation is normalized before assembling the string."""
     to_text: Callable[[Tok], str] = normalized_text if normalize else lambda t: t.txt
     r: List[str] = []
-    last = TP_NONE
+    last = TP_NONE  # Initialize `last` to a valid integer value
     double_quote_count = 0
     for t in tokens:
         w = to_text(t)
         if not w:
             continue
-        if t.kind == TOK.RAW and w.isspace():  # Handle whitespace tokens
-            r.append(w)  # Append whitespace directly
+        if t.kind == TOK.RAW and w.isspace():
+            # Add a single space for whitespace tokens
+            if r and not r[-1].isspace():
+                r.append(" ")
             continue
         this = TP_WORD
         if t.kind == TOK.PUNCTUATION:
-            if len(w) > 1:
-                pass
-            elif w == '"':
-                this = (TP_LEFT, TP_RIGHT)[double_quote_count % 2]
-                double_quote_count += 1
-            elif w in LEFT_PUNCTUATION:
-                this = TP_LEFT
-            elif w in RIGHT_PUNCTUATION:
-                this = TP_RIGHT
-            elif w in NONE_PUNCTUATION:
-                this = TP_NONE
-            elif w in CENTER_PUNCTUATION:
-                this = TP_CENTER
+            this = cast(PunctuationTuple, t.val)[0]
         if TP_SPACE[last - 1][this - 1] and r:
-            r.append(" " + w)
-        else:
-            r.append(w)
+            r.append(" ")
+        r.append(w)
         last = this
     return "".join(r)
 

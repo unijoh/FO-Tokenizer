@@ -1,7 +1,7 @@
 from fotokenizer.fotokenizer import tokenize, detokenize
 
 # Input text with consecutive whitespaces
-input_text = "Hello   world!  This  is  a test."
+input_text = "Góðan dagin! Hetta  er ein setningur. Er hetta ein góður  setningur? Ja, sjálvandi."
 
 # Tokenize the input text
 tokens = list(tokenize(input_text))

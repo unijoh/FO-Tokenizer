@@ -1,4 +1,4 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.4
 Name: fotokenizer
 Version: 1.0.0
 Summary: A tokenizer for Faroese text
@@ -50,6 +50,7 @@ Description-Content-Type: text/x-rst
 License-File: LICENSE.txt
 Provides-Extra: dev
 Requires-Dist: pytest; extra == "dev"
+Dynamic: license-file
 
 # FO-Tokenizer: A tokenizer for Faroese text
 

@@ -37,7 +37,7 @@ from typing import Generic, Iterator, Optional, Set, List, Dict, TypeVar
 
 from threading import Lock
 from collections import defaultdict, OrderedDict
-from importlib.resources import open_text
+from importlib.resources import open_text, files
 
 from .definitions import BIN_Tuple
 
@@ -286,28 +286,29 @@ class Abbreviations:
                 return
 
             section = None
-            config = open_text(package="fotokenizer", resource="Abbrev.conf", encoding="utf-8")
-            for s in config:
-                # Ignore comments
-                ix = s.find("#")
-                if ix >= 0:
-                    s = s[0:ix]
-                s = s.strip()
-                if not s:
-                    # Blank line: ignore
-                    continue
-                if s[0] == "[":
-                    # Section header (we are expecting [abbreviations]/[not_abbreviations])
-                    if s not in {"[abbreviations]", "[not_abbreviations]"}:
-                        raise ConfigError("Wrong section header")
-                    section = s
-                    continue
-                if section == "[abbreviations]":
-                    Abbreviations._handle_abbreviations(s)
-                elif section == "[not_abbreviations]":
-                    Abbreviations._handle_not_abbreviations(s)
-                else:
-                    raise ConfigError("Content outside section")
+            config_path = files("fotokenizer").joinpath("Abbrev.conf")
+            with config_path.open(encoding="utf-8") as config:
+                for s in config:
+                    # Ignore comments
+                    ix = s.find("#")
+                    if ix >= 0:
+                        s = s[0:ix]
+                    s = s.strip()
+                    if not s:
+                        # Blank line: ignore
+                        continue
+                    if s[0] == "[":
+                        # Section header (we are expecting [abbreviations]/[not_abbreviations])
+                        if s not in {"[abbreviations]", "[not_abbreviations]"}:
+                            raise ConfigError("Wrong section header")
+                        section = s
+                        continue
+                    if section == "[abbreviations]":
+                        Abbreviations._handle_abbreviations(s)
+                    elif section == "[not_abbreviations]":
+                        Abbreviations._handle_not_abbreviations(s)
+                    else:
+                        raise ConfigError("Content outside section")
 
             # Remove not_abbreviations from WRONGDICT
             for abbr in Abbreviations.NOT_ABBREVIATIONS:
