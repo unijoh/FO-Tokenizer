@@ -1380,54 +1380,34 @@ def html_replacement(token: Tok) -> Tok:
 
 def generate_rough_tokens_from_txt(text: str) -> Iterator[Tok]:
     """Generate rough tokens from a string."""
-    # Rough tokens are tokens that are separated by white space, i.e. the regex (\\s*)."""
-    # pos tracks the index in the text we have covered so far.
-    # We want to track pos, instead of treating text as a buffer,
-    # since that would lead to a lot of unnecessary copying.
     pos = 0
     while pos < len(text):
         match = ROUGH_TOKEN_REGEX.match(text, pos)
         assert match is not None
         match_span = match.span(ROUGH_TOKEN_REGEX_ENTIRE_MATCH)
-        tok = Tok.from_txt(text[match_span[SPAN_START] : match_span[SPAN_END]])
+        token_text = text[match_span[SPAN_START]:match_span[SPAN_END]]
+        if token_text.isspace():  # Check if the token is whitespace
+            yield Tok(TOK.RAW, token_text, None, token_text)  # Create a whitespace token
+        else:
+            yield Tok.from_txt(token_text)
         pos = match_span[SPAN_END]
-        yield tok
 
 
 def generate_rough_tokens_from_tok(tok: Tok) -> Iterator[Tok]:
     """Generate rough tokens from a token."""
-    # Some tokens might have whitespace characters after we replace composite unicode glyphs
-    # and replace HTML escapes.
-    # This function further splits those tokens into multiple tokens.
-    # Rough tokens are tokens that are separated by white space, i.e. the regex (\\s*)."""
-
-    def shift_span(span: Tuple[int, int], pos: int):
-        """Shift a span by a given amount"""
-        return (span[SPAN_START] + pos, span[SPAN_END] + pos)
-
     text = tok.txt
-    # pos tracks the index in the text we have covered so far.
-    # We want to track pos, instead of treating text as a buffer,
-    # since that would lead to a lot of unnecessary copying.
     pos = 0
     while pos < len(text):
         match = ROUGH_TOKEN_REGEX.match(text, pos)
         assert match is not None
-        # Since the match indexes the text of the original token,
-        # we need to shift the indices so that they match the current token.
-        shifted_all_group_span = shift_span(
-            match.span(ROUGH_TOKEN_REGEX_ENTIRE_MATCH), -pos
-        )
-        shifted_white_space_span = shift_span(
-            match.span(ROUGH_TOKEN_REGEX_WHITE_SPACE_GROUP), -pos
-        )
-        # Then we split the current token using the shifted spans
-        small_tok, tok = tok.split(shifted_all_group_span[SPAN_END])
-        # Remove whitespace characters from the start of the token
-        small_tok.substitute(shifted_white_space_span, "")
-        # The pos is not shifted
-        pos = match.span(ROUGH_TOKEN_REGEX_ENTIRE_MATCH)[SPAN_END]
-        yield small_tok
+        match_span = match.span(ROUGH_TOKEN_REGEX_ENTIRE_MATCH)
+        token_text = text[match_span[SPAN_START]:match_span[SPAN_END]]
+        if token_text.isspace():  # Check if the token is whitespace
+            yield Tok(TOK.RAW, token_text, None, token_text)  # Create a whitespace token
+        else:
+            small_tok, tok = tok.split(match_span[SPAN_END])
+            yield small_tok
+        pos = match_span[SPAN_END]
 
 
 def generate_raw_tokens(
@@ -3251,13 +3231,14 @@ def detokenize(tokens: Iterable[Tok], normalize: bool = False) -> str:
         w = to_text(t)
         if not w:
             continue
+        if t.kind == TOK.RAW and w.isspace():  # Handle whitespace tokens
+            r.append(w)  # Append whitespace directly
+            continue
         this = TP_WORD
         if t.kind == TOK.PUNCTUATION:
             if len(w) > 1:
                 pass
             elif w == '"':
-                # For English-type double quotes, we glue them alternatively
-                # to the right and to the left token
                 this = (TP_LEFT, TP_RIGHT)[double_quote_count % 2]
                 double_quote_count += 1
             elif w in LEFT_PUNCTUATION:
